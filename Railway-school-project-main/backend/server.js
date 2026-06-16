@@ -91,12 +91,9 @@ async function startServer() {
   try {
     await db.sequelize.authenticate();
     console.log('Database connection established.');
-
-    // --- CHANGE THIS PART ---
-    // This command creates the tables if they don't exist
-    await db.sequelize.sync({ alter: true }); 
-    console.log('Database synchronized (Tables created).');
-    // ------------------------
+    
+    await db.sequelize.sync({ alter: true });
+    console.log('Database synchronized.');
 
     await seedDefaultUsers();
     console.log('Default users verified.');
@@ -105,7 +102,10 @@ async function startServer() {
       console.log(`Server running on port ${PORT}`);
     });
   } catch (error) {
-    console.error('Failed to start server:', error);
+    // THIS LINE IS CRITICAL:
+    console.error('--- DATABASE STARTUP ERROR ---');
+    console.error(error); 
+    console.error('------------------------------');
     process.exit(1);
   }
 }

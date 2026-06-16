@@ -28,8 +28,8 @@ db.User = require('./user')(sequelize, Sequelize.DataTypes);
 db.Student = require('./student')(sequelize, Sequelize.DataTypes);
 db.Mark = require('./mark')(sequelize, Sequelize.DataTypes);
 db.Fee = require('./fee')(sequelize, Sequelize.DataTypes);
-db.Attendance = require('./Attendance')(sequelize, Sequelize.DataTypes);
-db.Remark = require('./Remark')(sequelize, Sequelize.DataTypes);
+db.Attendance = require('./attendance')(sequelize, Sequelize.DataTypes);
+db.Remark = require('./remark')(sequelize, Sequelize.DataTypes);
 
 // Associations
 db.Student.hasMany(db.Mark, { foreignKey: 'studentReg', sourceKey: 'admissionNo' });
