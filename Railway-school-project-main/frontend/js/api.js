@@ -1,6 +1,6 @@
 // js/api.js
 // js/api.js
-const API_BASE = '"https://railway-school-project-k3x8.onrender.com'; // Relative URL
+const API_BASE = 'https://railway-school-project-k3x8.onrender.com'; // Relative URL
 
 async function apiRequest(path, options = {}) {
     const token = localStorage.getItem('authToken');
