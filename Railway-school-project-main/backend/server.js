@@ -91,7 +91,12 @@ async function startServer() {
   try {
     await db.sequelize.authenticate();
     console.log('Database connection established.');
-    console.log('Database sync skipped.');
+
+    // --- CHANGE THIS PART ---
+    // This command creates the tables if they don't exist
+    await db.sequelize.sync({ alter: true }); 
+    console.log('Database synchronized (Tables created).');
+    // ------------------------
 
     await seedDefaultUsers();
     console.log('Default users verified.');
@@ -104,5 +109,3 @@ async function startServer() {
     process.exit(1);
   }
 }
-
-startServer();
