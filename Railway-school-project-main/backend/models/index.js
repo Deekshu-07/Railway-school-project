@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
@@ -15,7 +15,8 @@ const sequelize = new Sequelize(
         minVersion: 'TLSv1.2',
         rejectUnauthorized: false,
       }
-    }
+    },
+    logging: false // Keep logs clean
   }
 );
 
@@ -23,13 +24,13 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-// Pass both sequelize and Sequelize.DataTypes to avoid crashes
-db.User = require('./user')(sequelize, Sequelize.DataTypes);
-db.Student = require('./student')(sequelize, Sequelize.DataTypes);
-db.Mark = require('./mark')(sequelize, Sequelize.DataTypes);
-db.Fee = require('./fee')(sequelize, Sequelize.DataTypes);
-db.Attendance = require('./attendance')(sequelize, Sequelize.DataTypes);
-db.Remark = require('./remark')(sequelize, Sequelize.DataTypes);
+// Models - Using absolute lowercase to match Linux/Render requirements
+db.User = require('./user')(sequelize, DataTypes);
+db.Student = require('./student')(sequelize, DataTypes);
+db.Mark = require('./mark')(sequelize, DataTypes);
+db.Fee = require('./fee')(sequelize, DataTypes);
+db.Attendance = require('./attendance')(sequelize, DataTypes);
+db.Remark = require('./remark')(sequelize, DataTypes);
 
 // Associations
 db.Student.hasMany(db.Mark, { foreignKey: 'studentReg', sourceKey: 'admissionNo' });
