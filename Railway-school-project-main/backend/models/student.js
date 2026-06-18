@@ -2,7 +2,13 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
   return sequelize.define('Student', {
-    admissionNo: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    // Example of how it should look inside student.js
+admissionNo: {
+  type: DataTypes.STRING,
+  primaryKey: true,    // <--- MAKE SURE THIS IS HERE
+  allowNull: false,
+  unique: true
+},
     studentId: { type: DataTypes.STRING, unique: true, allowNull: false },
     reg: { type: DataTypes.STRING, allowNull: true },
     name: { type: DataTypes.STRING, allowNull: false },

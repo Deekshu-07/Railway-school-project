@@ -56,7 +56,7 @@ async function startServer() {
     
     console.log("Step 4: Syncing Database...");
     // Use { alter: false } or just sync() to avoid TiDB migration errors
-    await db.sequelize.sync(); 
+    await db.sequelize.sync({ alter: true });
 
     await seedDefaultUsers();
     
