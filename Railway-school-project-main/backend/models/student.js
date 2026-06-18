@@ -7,7 +7,6 @@ admissionNo: {
   type: DataTypes.STRING,
   primaryKey: true,    // <--- MAKE SURE THIS IS HERE
   allowNull: false,
-  unique: true
 },
     studentId: { type: DataTypes.STRING, unique: true, allowNull: false },
     reg: { type: DataTypes.STRING, allowNull: true },

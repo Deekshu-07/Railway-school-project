@@ -34,7 +34,7 @@ db.Remark = require('./remark')(sequelize, DataTypes);
 
 // Associations
 db.Student.hasMany(db.Mark, { foreignKey: 'studentReg', sourceKey: 'admissionNo' });
-db.Mark.belongsTo(db.Student, { foreignKey: 'studentReg', targetKey: 'admissionNo' });
+db.Mark.belongsTo(db.Student, { foreignKey: 'studentReg', targetKey: 'admissionNo' , as: 'student'});
 db.Student.hasMany(db.Fee, { foreignKey: 'studentReg', sourceKey: 'admissionNo' });
 db.Fee.belongsTo(db.Student, { foreignKey: 'studentReg', targetKey: 'admissionNo' });
 
