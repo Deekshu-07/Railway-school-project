@@ -1,6 +1,6 @@
 // js/api.js
 // js/api.js
-const API_BASE = 'https://railway-school-project.onrender.com/api';
+const API_BASE = 'https://railway-school-final.onrender.com/api';
 async function apiRequest(path, options = {}) {
     const token = localStorage.getItem('authToken');
     const headers = Object.assign({ 'Content-Type': 'application/json' }, options.headers || {});
